@@ -22,19 +22,25 @@ function AchievementCard({
 }) {
   return (
     <div 
-      className={`p-3 rounded-lg border ${
+      className={`p-3 border ${
         unlocked 
-          ? 'bg-gray-700 border-amber-500' 
-          : 'bg-gray-800 border-gray-700 opacity-60'
+          ? 'bg-mc-dark border-mc-red' 
+          : 'bg-mc-panel border-mc-border opacity-50'
       }`}
     >
       <div className="flex items-center gap-2 mb-1">
-        <span className="text-xl">{unlocked ? achievement.icon : '🔒'}</span>
-        <span className={`font-semibold ${unlocked ? 'text-amber-400' : 'text-gray-400'}`}>
+        {unlocked ? (
+          <div className="mc-dot" />
+        ) : (
+          <div className="w-1.5 h-1.5 bg-mc-gray-dim" />
+        )}
+        <span className={`text-xs font-medium tracking-wide uppercase ${
+          unlocked ? 'text-mc-red' : 'text-mc-gray-dim'
+        }`}>
           {achievement.name}
         </span>
       </div>
-      <p className="text-sm text-gray-400">{achievement.description}</p>
+      <p className="text-[11px] text-mc-gray ml-4">{achievement.description}</p>
     </div>
   );
 }
@@ -48,41 +54,43 @@ export function MetaAchievements({ stats }: MetaAchievementsProps) {
   const percent = Math.round((unlocked.length / total) * 100);
 
   return (
-    <div className="bg-gray-800 rounded-lg p-6 mb-8">
-      <div 
-        className="flex items-center justify-between cursor-pointer"
+    <div className="mc-panel mc-panel-bottom p-5 mb-8">
+      <button 
+        className="w-full flex items-center justify-between"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center gap-3">
-          <span className="text-2xl">🏅</span>
-          <div>
-            <h3 className="text-lg font-bold">Cross-Game Achievements</h3>
-            <p className="text-sm text-gray-400">
-              {unlocked.length}/{total} unlocked ({percent}%)
+          <div className="mc-dot" />
+          <div className="text-left">
+            <h3 className="mc-header-primary text-sm">CROSS-GAME ACHIEVEMENTS</h3>
+            <p className="mc-header text-[10px] mt-0.5">
+              {unlocked.length}/{total} UNLOCKED ({percent}%)
             </p>
           </div>
         </div>
-        <button className="text-gray-400 hover:text-white">
-          {isExpanded ? '▲' : '▼'}
-        </button>
-      </div>
+        <span className="mc-value text-mc-gray-dim text-sm">
+          {isExpanded ? '[-]' : '[+]'}
+        </span>
+      </button>
 
       {/* Progress bar */}
-      <div className="h-2 bg-gray-700 rounded overflow-hidden mt-4">
+      <div className="mc-progress mt-4">
         <div 
-          className="h-full bg-amber-500 transition-all duration-500"
+          className="mc-progress-fill"
           style={{ width: `${percent}%` }}
         />
       </div>
 
       {isExpanded && (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-5">
           {/* Unlocked section */}
           {unlocked.length > 0 && (
             <div>
-              <h4 className="text-sm font-semibold text-green-400 mb-2 flex items-center gap-2">
-                <span>✓</span> Unlocked ({unlocked.length})
-              </h4>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-1.5 h-1.5 bg-mc-red" />
+                <h4 className="mc-header text-[10px]">UNLOCKED ({unlocked.length})</h4>
+                <div className="flex-1 mc-divider" />
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {unlocked.map(a => (
                   <AchievementCard key={a.id} achievement={a} unlocked={true} />
@@ -94,9 +102,11 @@ export function MetaAchievements({ stats }: MetaAchievementsProps) {
           {/* Locked section */}
           {locked.length > 0 && (
             <div>
-              <h4 className="text-sm font-semibold text-gray-500 mb-2 flex items-center gap-2">
-                <span>🔒</span> Locked ({locked.length})
-              </h4>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-1.5 h-1.5 bg-mc-gray-dim" />
+                <h4 className="mc-header text-[10px] text-mc-gray-dim">LOCKED ({locked.length})</h4>
+                <div className="flex-1 mc-divider" />
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {locked.map(a => (
                   <AchievementCard key={a.id} achievement={a} unlocked={false} />

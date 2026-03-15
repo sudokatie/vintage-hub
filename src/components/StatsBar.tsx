@@ -4,21 +4,24 @@ interface StatsBarProps {
   current: number;
   total: number;
   label: string;
-  color?: string;
 }
 
-export function StatsBar({ current, total, label, color = 'bg-white/80' }: StatsBarProps) {
+export function StatsBar({ current, total, label }: StatsBarProps) {
   const percent = total > 0 ? Math.round((current / total) * 100) : 0;
   
   return (
     <div className="space-y-1">
-      <div className="flex justify-between text-sm">
-        <span className="text-white/70">{label}</span>
-        <span className="text-white">{current}/{total}</span>
+      <div className="flex justify-between items-center">
+        <span className="mc-header text-[10px]">{label.toUpperCase()}</span>
+        <div className="flex items-center gap-1">
+          <span className="mc-value-red text-sm">{current}</span>
+          <span className="text-mc-gray-dim text-xs">/</span>
+          <span className="mc-value text-sm">{total}</span>
+        </div>
       </div>
-      <div className="h-1.5 bg-black/30 rounded overflow-hidden">
+      <div className="mc-progress">
         <div 
-          className={`h-full ${color} transition-all duration-300`}
+          className="mc-progress-fill"
           style={{ width: `${percent}%` }}
         />
       </div>

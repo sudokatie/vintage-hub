@@ -18,7 +18,6 @@ export function GameCard({ game }: GameCardProps) {
   const [progress, setProgress] = useState<GameProgress>({});
 
   useEffect(() => {
-    // Read from localStorage
     try {
       // Try to get high score
       const scoreData = localStorage.getItem(game.storageKey);
@@ -31,7 +30,7 @@ export function GameCard({ game }: GameCardProps) {
       // Try to get achievements
       const achieveData = localStorage.getItem(game.achievementKey);
       let achievementsUnlocked = 0;
-      let totalAchievements = 21; // Default
+      let totalAchievements = 21;
       if (achieveData) {
         const parsed = JSON.parse(achieveData);
         if (Array.isArray(parsed)) {
@@ -60,37 +59,52 @@ export function GameCard({ game }: GameCardProps) {
   return (
     <a
       href={game.url}
-      className={`block p-4 rounded-lg ${game.color} hover:opacity-90 transition-opacity`}
+      className="mc-panel mc-panel-bottom mc-interactive block p-4 group"
     >
-      <div className="flex items-start justify-between mb-2">
-        <h3 className="text-xl font-bold text-white">{game.name}</h3>
-        <span className="text-xs text-white/70 uppercase">{game.category}</span>
+      {/* Header row */}
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex items-center gap-2">
+          <div className="mc-dot" />
+          <h3 className="mc-header-primary text-sm">{game.name.toUpperCase()}</h3>
+        </div>
+        <span className="mc-header text-[10px]">{game.category.toUpperCase()}</span>
       </div>
       
-      <p className="text-sm text-white/80 mb-4">{game.description}</p>
+      {/* Description */}
+      <p className="text-mc-gray text-xs mb-4 leading-relaxed">
+        {game.description}
+      </p>
       
+      {/* Stats grid */}
       <div className="space-y-2">
         {progress.highScore !== undefined && (
-          <div className="flex justify-between text-sm">
-            <span className="text-white/70">High Score</span>
-            <span className="text-white font-mono">{progress.highScore.toLocaleString()}</span>
+          <div className="flex justify-between items-center">
+            <span className="mc-header text-[10px]">HIGH SCORE</span>
+            <span className="mc-value text-sm">{progress.highScore.toLocaleString()}</span>
           </div>
         )}
         
-        <div className="flex justify-between items-center text-sm">
-          <span className="text-white/70">Achievements</span>
-          <span className="text-white">
-            {progress.achievementsUnlocked || 0}/{progress.totalAchievements || 21}
-          </span>
+        <div className="flex justify-between items-center">
+          <span className="mc-header text-[10px]">ACHIEVEMENTS</span>
+          <div className="flex items-center gap-1">
+            <span className="mc-value-red text-sm">{progress.achievementsUnlocked || 0}</span>
+            <span className="text-mc-gray-dim text-xs">/</span>
+            <span className="mc-value text-sm">{progress.totalAchievements || 21}</span>
+          </div>
         </div>
         
-        {/* Achievement progress bar */}
-        <div className="h-1 bg-black/30 rounded overflow-hidden">
+        {/* Progress bar */}
+        <div className="mc-progress mt-2">
           <div 
-            className="h-full bg-white/80 transition-all duration-300"
+            className="mc-progress-fill"
             style={{ width: `${achievementPercent}%` }}
           />
         </div>
+      </div>
+
+      {/* Hover indicator */}
+      <div className="mt-3 pt-2 border-t border-mc-border opacity-0 group-hover:opacity-100 transition-opacity">
+        <span className="mc-header text-[10px] text-mc-red">LAUNCH GAME</span>
       </div>
     </a>
   );

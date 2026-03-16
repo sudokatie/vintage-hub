@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import type { GameInfo } from '@/lib/games';
 
 interface GameCardProps {
@@ -63,12 +64,13 @@ export function GameCard({ game }: GameCardProps) {
     >
       {/* Thumbnail */}
       {game.thumbnail && (
-        <div className="mb-3 -mx-4 -mt-4 rounded-t overflow-hidden">
-          <img 
+        <div className="mb-3 -mx-4 -mt-4 rounded-t overflow-hidden relative h-32">
+          <Image 
             src={game.thumbnail} 
             alt={game.name}
-            className="w-full h-32 object-cover object-top"
-            loading="lazy"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       )}

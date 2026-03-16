@@ -92,6 +92,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'lemming-progress',
     achievementKey: 'lemming-achievements',
     url: '/games/lemming',
+    thumbnail: '/thumbnails/lemming.jpg',
   },
   {
     id: 'conduit',
@@ -102,6 +103,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'conduit-progress',
     achievementKey: 'conduit-achievements',
     url: '/games/conduit',
+    thumbnail: '/thumbnails/conduit.jpg',
   },
   {
     id: 'excavation',
@@ -112,6 +114,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'excavation-progress',
     achievementKey: 'excavation-achievements',
     url: '/games/excavation',
+    thumbnail: '/thumbnails/excavation.jpg',
   },
 ];
 

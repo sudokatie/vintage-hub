@@ -61,6 +61,18 @@ export function GameCard({ game }: GameCardProps) {
       href={game.url}
       className="mc-panel mc-panel-bottom mc-interactive block p-4 group"
     >
+      {/* Thumbnail */}
+      {game.thumbnail && (
+        <div className="mb-3 -mx-4 -mt-4 rounded-t overflow-hidden">
+          <img 
+            src={game.thumbnail} 
+            alt={game.name}
+            className="w-full h-32 object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+      )}
+      
       {/* Header row */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">

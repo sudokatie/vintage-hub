@@ -7,6 +7,7 @@ export interface GameInfo {
   storageKey: string;
   achievementKey: string;
   url: string;
+  thumbnail?: string;
 }
 
 // Base URL for games - update when deploying
@@ -24,6 +25,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'hopper-highscore',
     achievementKey: 'hopper-achievements',
     url: '/games/hopper',
+    thumbnail: '/thumbnails/hopper.jpg',
   },
   {
     id: 'intercept',
@@ -34,6 +36,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'intercept-highscore',
     achievementKey: 'intercept-achievements',
     url: '/games/intercept',
+    thumbnail: '/thumbnails/intercept.jpg',
   },
   {
     id: 'rescue',
@@ -44,6 +47,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'rescue-highscore',
     achievementKey: 'rescue-achievements',
     url: '/games/rescue',
+    thumbnail: '/thumbnails/rescue.jpg',
   },
   {
     id: 'detonator',
@@ -54,6 +58,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'detonator-highscore',
     achievementKey: 'detonator-achievements',
     url: '/games/detonator',
+    thumbnail: '/thumbnails/detonator.jpg',
   },
   {
     id: 'digger',
@@ -64,6 +69,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'digger-highscore',
     achievementKey: 'digger-achievements',
     url: '/games/digger',
+    thumbnail: '/thumbnails/digger.jpg',
   },
   // Puzzle Games
   {
@@ -75,6 +81,7 @@ export const GAMES: GameInfo[] = [
     storageKey: 'crates-progress',
     achievementKey: 'crates-achievements',
     url: '/games/crates',
+    thumbnail: '/thumbnails/crates.jpg',
   },
   {
     id: 'lemming',

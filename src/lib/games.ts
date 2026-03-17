@@ -7,12 +7,7 @@ export interface GameInfo {
   storageKey: string;
   achievementKey: string;
   url: string;
-  thumbnail?: string;
 }
-
-// Base URL for games - update when deploying
-// Options: relative paths, subdomain, or full URLs
-export const GAMES_BASE_URL = '/games';
 
 export const GAMES: GameInfo[] = [
   // Arcade Games
@@ -24,8 +19,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-green-600',
     storageKey: 'hopper-highscore',
     achievementKey: 'hopper-achievements',
-    url: '/games/hopper',
-    thumbnail: '/thumbnails/hopper.jpg',
+    url: '/games/hopper/',
   },
   {
     id: 'intercept',
@@ -35,8 +29,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-red-600',
     storageKey: 'intercept-highscore',
     achievementKey: 'intercept-achievements',
-    url: '/games/intercept',
-    thumbnail: '/thumbnails/intercept.jpg',
+    url: '/games/intercept/',
   },
   {
     id: 'rescue',
@@ -46,8 +39,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-blue-600',
     storageKey: 'rescue-highscore',
     achievementKey: 'rescue-achievements',
-    url: '/games/rescue',
-    thumbnail: '/thumbnails/rescue.jpg',
+    url: '/games/rescue/',
   },
   {
     id: 'detonator',
@@ -57,8 +49,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-orange-600',
     storageKey: 'detonator-highscore',
     achievementKey: 'detonator-achievements',
-    url: '/games/detonator',
-    thumbnail: '/thumbnails/detonator.jpg',
+    url: '/games/detonator/',
   },
   {
     id: 'digger',
@@ -68,8 +59,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-yellow-600',
     storageKey: 'digger-highscore',
     achievementKey: 'digger-achievements',
-    url: '/games/digger',
-    thumbnail: '/thumbnails/digger.jpg',
+    url: '/games/digger/',
   },
   // Puzzle Games
   {
@@ -80,8 +70,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-amber-700',
     storageKey: 'crates-progress',
     achievementKey: 'crates-achievements',
-    url: '/games/crates',
-    thumbnail: '/thumbnails/crates.jpg',
+    url: '/games/crates/',
   },
   {
     id: 'lemming',
@@ -91,8 +80,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-emerald-600',
     storageKey: 'lemming-progress',
     achievementKey: 'lemming-achievements',
-    url: '/games/lemming',
-    thumbnail: '/thumbnails/lemming.jpg',
+    url: '/games/lemming/',
   },
   {
     id: 'conduit',
@@ -102,8 +90,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-cyan-600',
     storageKey: 'conduit-progress',
     achievementKey: 'conduit-achievements',
-    url: '/games/conduit',
-    thumbnail: '/thumbnails/conduit.jpg',
+    url: '/games/conduit/',
   },
   {
     id: 'excavation',
@@ -113,8 +100,7 @@ export const GAMES: GameInfo[] = [
     color: 'bg-purple-600',
     storageKey: 'excavation-progress',
     achievementKey: 'excavation-achievements',
-    url: '/games/excavation',
-    thumbnail: '/thumbnails/excavation.jpg',
+    url: '/games/excavation/',
   },
 ];
 
